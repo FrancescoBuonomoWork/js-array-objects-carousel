@@ -1,5 +1,22 @@
 // console.log("funziona");
 
+// da rivedere questa funzione 
+function slideToNext(mainImg, smallImg) {
+    mainImg[currentIndex].classList.remove("active");
+    // miniature 
+    smallImg[currentIndex].classList.remove("active");
+    // prima incremento index
+    // poi controllo l indice a cosa coincide e lo resetto in caso di fine
+    if (currentIndex === mainImg.length - 1) {
+        currentIndex = 0;
+    } else {
+        currentIndex = currentIndex + 1;
+    }
+    // console.log(index);
+    mainImg[currentIndex].classList.add("active")
+    smallImg[currentIndex].classList.add("active");
+
+}
 const imgWrapperDOMElement = document.querySelector(".img-wrapper");
 // console.log(imgWrapperDOMElement);
 
@@ -42,7 +59,7 @@ for (let i = 0; i < images.length; i++) {
     // console.log(currentTitle);
     const currentText = images[i].text;
     // console.log(currentText);
-    
+
     const html = `
     <div class="wrapper__item">
     <img class="img-wrapper__item" src="./${currentImgSRC}">
@@ -53,7 +70,7 @@ for (let i = 0; i < images.length; i++) {
     </div>
     `
     imgWrapperDOMElement.innerHTML += html;
-    
+
 };
 
 // aggiugniamo la classe active al primo elemento 
@@ -78,68 +95,41 @@ const imgThumbnailsDOMElements = document.getElementsByClassName("img-thumbnails
 console.log(imgThumbnailsDOMElements)
 imgThumbnailsDOMElements[currentIndex].classList.add("active");
 
-const timer = setInterval(function(){
-    wrapperItemDOMElements[currentIndex].classList.remove("active");
-        // miniature 
-        imgThumbnailsDOMElements[currentIndex].classList.remove("active");
-        // prima incremento 
-        currentIndex = currentIndex + 1;
-        // poi controllo l indice a cosa coincide e lo resetto in caso di fine
-        if(currentIndex === wrapperItemDOMElements.length) {
-            currentIndex = 0;
-        }
-        console.log(currentIndex);
-        wrapperItemDOMElements[currentIndex].classList.add("active")
-        imgThumbnailsDOMElements[currentIndex].classList.add("active");
-},3000)
+const timer = setInterval(function () {
+    slideToNext(wrapperItemDOMElements, imgThumbnailsDOMElements);
+}, 3000)
 
 
 
-// da rivedere questa funzione 
-// function slideToNext(index,mainImg,smallImg) {
-//         mainImg[index].classList.remove("active");
-//         // miniature 
-//        smallImg[index].classList.remove("active");
-//         // prima incremento index
-//         index = index + 1;
-//         // poi controllo l indice a cosa coincide e lo resetto in caso di fine
-//         if(index === mainImg.length) {
-//             index  = 0;
-//         }
-//         // console.log(index);
-//         mainImg[index].classList.add("active")
-//         smallImg[index].classList.add("active");
-
-// }
 // console.log(currentIndex)
-// arrowDownDOMElement.addEventListener("click", function(){
-// slideToNext(currentIndex,wrapperItemDOMElements,imgThumbnailsDOMElements);
-// })
- 
-// arrowDownDOMElement.addEventListener("click", slideToNext(currentIndex,wrapperItemDOMElements,imgThumbnailsDOMElements ))
-// evento click freccia giu che mostra la slide successiva
-// console.log(currentWrapperItem);
 arrowDownDOMElement.addEventListener("click", function () {
-    console.log("click giu");
-        // immagini del carosello 
-        wrapperItemDOMElements[currentIndex].classList.remove("active");
-        // miniature 
-        imgThumbnailsDOMElements[currentIndex].classList.remove("active");
-        // prima incremento 
-        currentIndex = currentIndex + 1;
-        // poi controllo l indice a cosa coincide e lo resetto in caso di fine
-        if(currentIndex === wrapperItemDOMElements.length) {
-            currentIndex = 0;
-        }
-        console.log(currentIndex);
-        wrapperItemDOMElements[currentIndex].classList.add("active")
-        imgThumbnailsDOMElements[currentIndex].classList.add("active");
-        
-
+    slideToNext(wrapperItemDOMElements, imgThumbnailsDOMElements);
 })
 
-    // evento click freccia su che mostra la slide precendete 
-    
+arrowDownDOMElement.addEventListener("click", slideToNext)
+// evento click freccia giu che mostra la slide successiva
+// console.log(currentWrapperItem);
+// arrowDownDOMElement.addEventListener("click", function () {
+//     console.log("click giu");
+//         // immagini del carosello 
+//         wrapperItemDOMElements[currentIndex].classList.remove("active");
+//         // miniature 
+//         imgThumbnailsDOMElements[currentIndex].classList.remove("active");
+//         // prima incremento 
+//         currentIndex = currentIndex + 1;
+//         // poi controllo l indice a cosa coincide e lo resetto in caso di fine
+//         if(currentIndex === wrapperItemDOMElements.length) {
+//             currentIndex = 0;
+//         }
+//         console.log(currentIndex);
+//         wrapperItemDOMElements[currentIndex].classList.add("active")
+//         imgThumbnailsDOMElements[currentIndex].classList.add("active");
+
+
+// })
+
+// evento click freccia su che mostra la slide precendete 
+
 arrowUpDOMElement.addEventListener("click", function () {
     console.log("click su");
     wrapperItemDOMElements[currentIndex].classList.remove("active");
@@ -148,10 +138,10 @@ arrowUpDOMElement.addEventListener("click", function () {
     // prima decremento
     currentIndex = currentIndex - 1;
     // poi controllo l indice a cosa coincide e lo resetto in caso di fine
-    if(currentIndex === -1) {
+    if (currentIndex === -1) {
         currentIndex = wrapperItemDOMElements.length - 1;
     }
-   
+
     console.log(currentIndex);
     wrapperItemDOMElements[currentIndex].classList.add("active");
     imgThumbnailsDOMElements[currentIndex].classList.add("active");
