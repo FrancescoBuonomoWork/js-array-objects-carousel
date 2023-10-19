@@ -12,11 +12,8 @@ img{
     height: 300px;
     position: relative;
 }
-.wrapper__item{
-    display: none;
-}
 .img-wrapper__item{
-
+    
     aspect-ratio: 21/9;
     object-fit: cover;
 }
@@ -26,6 +23,9 @@ img{
 .container{
     max-width: 1000px;
     margin: 0 auto;
+}
+.wrapper__item{
+    display: none;
 }
 .active {
     display: block;
