@@ -3,10 +3,6 @@
 const imgWrapperDOMElement = document.querySelector(".img-wrapper");
 // console.log(imgWrapperDOMElement);
 
-const arrowUpDOMElement = document.querySelector(".arrow-up");
-// console.log(arrowUpDOMElement);
-const arrowDownDOMElement = document.querySelector(".arrow-down");
-console.log(arrowDownDOMElement);
 
 const images = [
     {
@@ -46,18 +42,18 @@ for (let i = 0; i < images.length; i++) {
     // console.log(currentTitle);
     const currentText = images[i].text;
     // console.log(currentText);
-
+    
     const html = `
-   <div class="wrapper__item">
-                    <img class="img-wrapper__item" src="./${currentImgSRC}">
-                    <div class="text-wrapper">
-                        <h3>${currentTitle}</h3>
-                        <p>${currentText}</p>
-                    </div>
+    <div class="wrapper__item">
+    <img class="img-wrapper__item" src="./${currentImgSRC}">
+    <div class="text-wrapper">
+    <h3>${currentTitle}</h3>
+    <p>${currentText}</p>
     </div>
-   `
+    </div>
+    `
     imgWrapperDOMElement.innerHTML += html;
-
+    
 };
 
 // aggiugniamo la classe active al primo elemento 
@@ -67,21 +63,48 @@ console.log(wrapperItemDOMElements);
 // diamo al primo elemento la classe active 
 console.log(wrapperItemDOMElements[0]);
 
-const currentWrapperItem = wrapperItemDOMElements[0].classList.add("active");
+let currentIndex = 0;
+wrapperItemDOMElements[currentIndex].classList.add("active");
 console.log(wrapperItemDOMElements.length);
 
-// evento click freccia giu
+// recuperiamo le frecce dal DOM 
+const arrowUpDOMElement = document.querySelector(".arrow-up");
+// console.log(arrowUpDOMElement);
+const arrowDownDOMElement = document.querySelector(".arrow-down");
+// console.log(arrowDownDOMElement);
 
+// evento click freccia giu
+// console.log(currentWrapperItem);
 arrowDownDOMElement.addEventListener("click", function () {
     console.log("click giu");
+    
+        wrapperItemDOMElements[currentIndex].classList.remove("active");
+        // prima incremento 
+        currentIndex = currentIndex + 1;
+        // poi controllo l indice a cosa coincide e lo resetto in caso di fine
+        if(currentIndex === wrapperItemDOMElements.length) {
+            currentIndex = 0;
+        }
+        console.log(currentIndex);
+        wrapperItemDOMElements[currentIndex].classList.add("active")
+        
+
 })
 
-//     for(i=0 ; i < wrapperItemDOMElements.length;i++){
-
-//     }
-// evento click freccia su
-
+    // evento click freccia su
+    
 arrowUpDOMElement.addEventListener("click", function () {
     console.log("click su");
+    wrapperItemDOMElements[currentIndex].classList.remove("active");
+    // prima decremento
+    currentIndex = currentIndex - 1;
+    // poi controllo l indice a cosa coincide e lo resetto in caso di fine
+    if(currentIndex === -1) {
+        currentIndex = wrapperItemDOMElements.length - 1;
+    }
+   
+    console.log(currentIndex);
+    wrapperItemDOMElements[currentIndex].classList.add("active")
+
 })
 
