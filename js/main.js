@@ -73,7 +73,7 @@ const arrowUpDOMElement = document.querySelector(".arrow-up");
 const arrowDownDOMElement = document.querySelector(".arrow-down");
 // console.log(arrowDownDOMElement);
 
-// evento click freccia giu
+// evento click freccia giu che mostra la slide successiva
 // console.log(currentWrapperItem);
 arrowDownDOMElement.addEventListener("click", function () {
     console.log("click giu");
@@ -91,7 +91,7 @@ arrowDownDOMElement.addEventListener("click", function () {
 
 })
 
-    // evento click freccia su
+    // evento click freccia su che mostra la slide precendete 
     
 arrowUpDOMElement.addEventListener("click", function () {
     console.log("click su");
@@ -107,4 +107,6 @@ arrowUpDOMElement.addEventListener("click", function () {
     wrapperItemDOMElements[currentIndex].classList.add("active")
 
 })
+
+
 

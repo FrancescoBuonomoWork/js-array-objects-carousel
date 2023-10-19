@@ -23,6 +23,7 @@ img{
 .container{
     max-width: 1000px;
     margin: 0 auto;
+    display: flex;
 }
 .wrapper__item{
     display: none;
@@ -54,4 +55,16 @@ img{
     text-align: end;
     color: white;
     right: 20px;
+}
+/* thumbnails  */
+
+.thumbnails-wrapper{
+    /* border: 2px solid black; */
+    /* width: 300px; */
+    height: 300px;
+}
+.img-thumbnails-wrapper__item {
+    aspect-ratio: 21/9;
+    object-fit: cover;
+    height: calc(100% / 5);
 }
