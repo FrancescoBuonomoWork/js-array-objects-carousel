@@ -12,6 +12,9 @@ img{
     height: 300px;
     position: relative;
 }
+.wrapper__item{
+    display: none;
+}
 .img-wrapper__item{
 
     aspect-ratio: 21/9;
@@ -23,6 +26,9 @@ img{
 .container{
     max-width: 1000px;
     margin: 0 auto;
+}
+.active {
+    display: block;
 }
 .arrow {
     border: 2px solid currentColor;
@@ -38,9 +44,14 @@ img{
 }
 .arrow.arrow-up{
     top: 20px;
-    
 }
 .arrow.arrow-down{
-    bottom: 20px;
-    
+    bottom: 20px;  
+}
+.text-wrapper{
+    position: absolute;
+    bottom: 50px;
+    text-align: end;
+    color: white;
+    right: 20px;
 }

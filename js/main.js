@@ -1,5 +1,13 @@
 console.log("funziona");
 
+const imgWrapperDOMElement = document.querySelector(".img-wrapper");
+console.log(imgWrapperDOMElement);
+
+const arrowUpDOMElement = document.querySelector(".arrow-up");
+console.log(arrowUpDOMElement);
+const arrowDownDOMElement = document.querySelector(".arrow-down");
+console.log(arrowDownDOMElement);
+
 const images = [
 	{
 		image: 'img/01.webp',
@@ -27,3 +35,26 @@ const images = [
 		text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
 	},
 ]
+
+console.log(images);
+for(let i = 0; i < images.length;i++) {
+   const currentImgSRC = images[i].image;
+   console.log(currentImgSRC);
+   const currentTitle = images[i].title;
+   console.log(currentTitle);
+   const currentText = images[i].text;
+   console.log(currentText);
+
+   const html = `
+   <div class="wrapper__item">
+                    <img class="img-wrapper__item" src="./${currentImgSRC}">
+                    <div class="text-wrapper">
+                        <h3>${currentTitle}</h3>
+                        <p>${currentText}</p>
+                    </div>
+    </div>
+   `
+   imgWrapperDOMElement.innerHTML += html;
+   
+};
+
