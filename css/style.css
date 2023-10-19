@@ -67,4 +67,9 @@ img{
     aspect-ratio: 21/9;
     object-fit: cover;
     height: calc(100% / 5);
+    filter: grayscale(0.7);
+}
+.img-thumbnails-wrapper__item.active{
+    filter: grayscale(0);
+    border: 2px solid yellow;
 }

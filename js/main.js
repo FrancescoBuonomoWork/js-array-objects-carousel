@@ -73,12 +73,15 @@ const arrowUpDOMElement = document.querySelector(".arrow-up");
 const arrowDownDOMElement = document.querySelector(".arrow-down");
 // console.log(arrowDownDOMElement);
 
-// evento click freccia giu che mostra la slide successiva
-// console.log(currentWrapperItem);
-arrowDownDOMElement.addEventListener("click", function () {
-    console.log("click giu");
-    
-        wrapperItemDOMElements[currentIndex].classList.remove("active");
+// prendiamo dal DOM tutte gli elementi delle miniature 
+const imgThumbnailsDOMElements = document.getElementsByClassName("img-thumbnails-wrapper__item");
+console.log(imgThumbnailsDOMElements)
+imgThumbnailsDOMElements[currentIndex].classList.add("active");
+
+const timer = setInterval(function(){
+    wrapperItemDOMElements[currentIndex].classList.remove("active");
+        // miniature 
+        imgThumbnailsDOMElements[currentIndex].classList.remove("active");
         // prima incremento 
         currentIndex = currentIndex + 1;
         // poi controllo l indice a cosa coincide e lo resetto in caso di fine
@@ -87,6 +90,50 @@ arrowDownDOMElement.addEventListener("click", function () {
         }
         console.log(currentIndex);
         wrapperItemDOMElements[currentIndex].classList.add("active")
+        imgThumbnailsDOMElements[currentIndex].classList.add("active");
+},3000)
+
+
+
+// da rivedere questa funzione 
+// function slideToNext(index,mainImg,smallImg) {
+//         mainImg[index].classList.remove("active");
+//         // miniature 
+//        smallImg[index].classList.remove("active");
+//         // prima incremento index
+//         index = index + 1;
+//         // poi controllo l indice a cosa coincide e lo resetto in caso di fine
+//         if(index === mainImg.length) {
+//             index  = 0;
+//         }
+//         // console.log(index);
+//         mainImg[index].classList.add("active")
+//         smallImg[index].classList.add("active");
+
+// }
+// console.log(currentIndex)
+// arrowDownDOMElement.addEventListener("click", function(){
+// slideToNext(currentIndex,wrapperItemDOMElements,imgThumbnailsDOMElements);
+// })
+ 
+// arrowDownDOMElement.addEventListener("click", slideToNext(currentIndex,wrapperItemDOMElements,imgThumbnailsDOMElements ))
+// evento click freccia giu che mostra la slide successiva
+// console.log(currentWrapperItem);
+arrowDownDOMElement.addEventListener("click", function () {
+    console.log("click giu");
+        // immagini del carosello 
+        wrapperItemDOMElements[currentIndex].classList.remove("active");
+        // miniature 
+        imgThumbnailsDOMElements[currentIndex].classList.remove("active");
+        // prima incremento 
+        currentIndex = currentIndex + 1;
+        // poi controllo l indice a cosa coincide e lo resetto in caso di fine
+        if(currentIndex === wrapperItemDOMElements.length) {
+            currentIndex = 0;
+        }
+        console.log(currentIndex);
+        wrapperItemDOMElements[currentIndex].classList.add("active")
+        imgThumbnailsDOMElements[currentIndex].classList.add("active");
         
 
 })
@@ -96,6 +143,8 @@ arrowDownDOMElement.addEventListener("click", function () {
 arrowUpDOMElement.addEventListener("click", function () {
     console.log("click su");
     wrapperItemDOMElements[currentIndex].classList.remove("active");
+    imgThumbnailsDOMElements[currentIndex].classList.remove("active");
+
     // prima decremento
     currentIndex = currentIndex - 1;
     // poi controllo l indice a cosa coincide e lo resetto in caso di fine
@@ -104,7 +153,9 @@ arrowUpDOMElement.addEventListener("click", function () {
     }
    
     console.log(currentIndex);
-    wrapperItemDOMElements[currentIndex].classList.add("active")
+    wrapperItemDOMElements[currentIndex].classList.add("active");
+    imgThumbnailsDOMElements[currentIndex].classList.add("active");
+
 
 })
 
