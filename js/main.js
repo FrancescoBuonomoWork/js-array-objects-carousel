@@ -1,4 +1,22 @@
 // console.log("funziona");
+function prevSlide() {
+    
+    wrapperItemDOMElements[currentIndex].classList.remove("active");
+    imgThumbnailsDOMElements[currentIndex].classList.remove("active");
+    
+    // prima decremento
+    
+    // poi controllo l indice a cosa coincide e lo resetto in caso di fine
+    if (currentIndex === 0) {
+        currentIndex = wrapperItemDOMElements.length - 1;
+    } else {
+        currentIndex = currentIndex - 1;  
+    }
+    
+    console.log(currentIndex);
+    wrapperItemDOMElements[currentIndex].classList.add("active");
+    imgThumbnailsDOMElements[currentIndex].classList.add("active");
+}
 
 // da rivedere questa funzione 
 function slideToNext(mainImg, smallImg) {
@@ -95,6 +113,8 @@ const imgThumbnailsDOMElements = document.getElementsByClassName("img-thumbnails
 console.log(imgThumbnailsDOMElements)
 imgThumbnailsDOMElements[currentIndex].classList.add("active");
 
+
+// autoplay 
 const timer = setInterval(function () {
     slideToNext(wrapperItemDOMElements, imgThumbnailsDOMElements);
 }, 3000)
@@ -106,7 +126,7 @@ arrowDownDOMElement.addEventListener("click", function () {
     slideToNext(wrapperItemDOMElements, imgThumbnailsDOMElements);
 })
 
-arrowDownDOMElement.addEventListener("click", slideToNext)
+// arrowDownDOMElement.addEventListener("click", slideToNext)
 // evento click freccia giu che mostra la slide successiva
 // console.log(currentWrapperItem);
 // arrowDownDOMElement.addEventListener("click", function () {
@@ -132,21 +152,7 @@ arrowDownDOMElement.addEventListener("click", slideToNext)
 
 arrowUpDOMElement.addEventListener("click", function () {
     console.log("click su");
-    wrapperItemDOMElements[currentIndex].classList.remove("active");
-    imgThumbnailsDOMElements[currentIndex].classList.remove("active");
-
-    // prima decremento
-    currentIndex = currentIndex - 1;
-    // poi controllo l indice a cosa coincide e lo resetto in caso di fine
-    if (currentIndex === -1) {
-        currentIndex = wrapperItemDOMElements.length - 1;
-    }
-
-    console.log(currentIndex);
-    wrapperItemDOMElements[currentIndex].classList.add("active");
-    imgThumbnailsDOMElements[currentIndex].classList.add("active");
-
-
+    prevSlide();
 })
 
 
